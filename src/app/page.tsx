@@ -14,34 +14,37 @@ function Button({ children, onClick }: { children: React.ReactNode, onClick?: ()
 }
 
 export default function Home() {
-  const [audio, setAudio] = useState<HTMLAudioElement>()
+  const [focusAudio, setFocusAudio] = useState<HTMLAudioElement>()
+  const [youGotThisAudio, setYouGotThisAudio] = useState<HTMLAudioElement>()
+
 
   useEffect(() => {
-    setAudio(new Audio())
+    setFocusAudio(new Audio('https://d1xljvb3evuv0v.cloudfront.net/bella-focus.mp3'))
+    setYouGotThisAudio(new Audio('https://d1xljvb3evuv0v.cloudfront.net/elli-you-got-this.mp3'))
   }, [])
 
-  if (!audio) {
+  if (!focusAudio || !youGotThisAudio) {
     return null
   }
 
   return (
     <main className="flex min-h-screen flex-row items-stretch justify-between flex-wrap">
-      <Button onClick={() => audio.play()}>
+      <Button onClick={() => youGotThisAudio.play()}>
         You got this!
       </Button>
-      <Button>
+      <Button onClick={() => focusAudio.play()}>
         Focus
       </Button>
-      <Button>
+      <Button onClick={() => youGotThisAudio.play()}>
         You got this!
       </Button>
-      <Button>
+      <Button onClick={() => focusAudio.play()}>
         Focus
       </Button>
-      <Button>
+      <Button onClick={() => youGotThisAudio.play()}>
         You got this!
       </Button>
-      <Button>
+      <Button onClick={() => focusAudio.play()}>
         Focus
       </Button>
     </main>
